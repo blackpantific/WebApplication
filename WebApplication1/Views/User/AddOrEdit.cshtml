@@ -1,0 +1,37 @@
+﻿@model WebApplication1.Models.User
+
+
+@{
+    ViewBag.Title = "Главная страница";
+}
+
+    <h1>Лента</h1>
+    <div class="main-content">
+       
+        @using (Html.BeginForm("AddOrEdit", "User", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="decor">
+                <div class="form-left-decoration"></div>
+                <div class="form-right-decoration"></div>
+                <div class="circle"></div>
+                <div class="form-inner">
+                    <h3>Поделитесь информацией</h3>
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "add", @placeholder="Имя" } })
+                    <div style="text-align:center;">@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })</div>
+
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "add", @placeholder="Email" } })
+                    <div style="text-align:center;">@Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })</div>
+
+                    @Html.TextAreaFor(model => model.Description, 3, 30, new { @class = "form-control", placeholder = "Описание..."})
+                    <div style="text-align:center;">@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })</div>
+
+                    <input type="submit" value="Отправить">
+                </div>
+            </div>
+        }
+
+    </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<WebApplication1.Models.UserCount>
+@{
+    ViewBag.Title = "Лента";
+}
+
+<div style="text-align: center; margin-top: 100px; font-size: 35px; font-weight: 500; color: #6699CC;">Лента</div>
+
+<div class="sql__print">
+    <table class="tablet">
+        <tr class="header">
+            <td><p>ID - пользователя</p></td>
+            <td><p>Имя</p></td>
+            <td><p>Дата отправки</p></td>
+            <td><p>Описание</p></td>
+            <td><p>Количество отправок</p></td>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td><p>@Html.DisplayFor(modelItem => item.Id)</p></td>
+        <td><p>@Html.DisplayFor(modelItem => item.Name)</p></td>
+        <td><p>@Html.DisplayFor(modelItem => item.Date)</p></td>
+        <td><p>@Html.DisplayFor(modelItem => item.Description)</p></td>
+        <td><p>@Html.DisplayFor(modelItem => item.Count)</p></td>
+    </tr>
+        }
+
+    </table>
+</div>
